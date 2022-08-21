@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Kingfisher
+
 class WriteViewController: BaseViewController {
 
     var mainView = WriteView()
@@ -17,7 +19,9 @@ class WriteViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(saveImageNotificationObserver(notification:)), name: .selectedImage, object: nil)
     }
     
     override func configure() {
@@ -31,6 +35,20 @@ class WriteViewController: BaseViewController {
         
         let vc = SearchViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc
+    func saveImageNotificationObserver(notification: NSNotification) {
+        
+        if let image = notification.userInfo?["image"] as? String {
+            let url = URL(string: image)
+            DispatchQueue.main.async {
+                self.mainView.mainImageView.kf.setImage(with: url)
+            }
+        }
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("image"), object: nil)
     }
 
 }

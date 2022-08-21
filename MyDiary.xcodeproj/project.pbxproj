@@ -33,6 +33,8 @@
 		257861F528B253DE00261F69 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861F428B253DE00261F69 /* UIViewController+Extension.swift */; };
 		257861F828B255C400261F69 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861F728B255C400261F69 /* ImageModel.swift */; };
 		257861FB28B257A200261F69 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861FA28B257A200261F69 /* APIManager.swift */; };
+		257861FE28B2755B00261F69 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861FD28B2755B00261F69 /* Notification.Name+Extension.swift */; };
+		2578620128B27A1200261F69 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 2578620028B27A1200261F69 /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,7 @@
 		257861F428B253DE00261F69 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		257861F728B255C400261F69 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		257861FA28B257A200261F69 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		257861FD28B2755B00261F69 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,7 @@
 				257861CE28B2375700261F69 /* SnapKit in Frameworks */,
 				257861E128B23A4000261F69 /* SwiftyJSON in Frameworks */,
 				257861D128B2376400261F69 /* Then in Frameworks */,
+				2578620128B27A1200261F69 /* JGProgressHUD in Frameworks */,
 				257861E428B23A4C00261F69 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				257861F428B253DE00261F69 /* UIViewController+Extension.swift */,
+				257861FD28B2755B00261F69 /* Notification.Name+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				257861DD28B23A3300261F69 /* Alamofire */,
 				257861E028B23A4000261F69 /* SwiftyJSON */,
 				257861E328B23A4C00261F69 /* Kingfisher */,
+				2578620028B27A1200261F69 /* JGProgressHUD */,
 			);
 			productName = MyDiary;
 			productReference = 257861AB28B236A100261F69 /* MyDiary.app */;
@@ -243,6 +249,7 @@
 				257861DC28B23A3300261F69 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				257861DF28B23A4000261F69 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				257861E228B23A4C00261F69 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				257861FF28B27A1200261F69 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 257861AC28B236A100261F69 /* Products */;
 			projectDirPath = "";
@@ -278,6 +285,7 @@
 				257861F528B253DE00261F69 /* UIViewController+Extension.swift in Sources */,
 				257861EA28B244B400261F69 /* ReusableViewProtocol.swift in Sources */,
 				257861B328B236A100261F69 /* ViewController.swift in Sources */,
+				257861FE28B2755B00261F69 /* Notification.Name+Extension.swift in Sources */,
 				257861EF28B245E300261F69 /* SearchView.swift in Sources */,
 				257861AF28B236A100261F69 /* AppDelegate.swift in Sources */,
 				257861D728B2394B00261F69 /* APIKey.swift in Sources */,
@@ -548,6 +556,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		257861FF28B27A1200261F69 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -575,6 +591,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 257861E228B23A4C00261F69 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		2578620028B27A1200261F69 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 257861FF28B27A1200261F69 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
