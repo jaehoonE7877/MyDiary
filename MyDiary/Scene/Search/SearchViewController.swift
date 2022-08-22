@@ -80,7 +80,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     // didselect 하면 데이터 notification
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImageURL = imageList[indexPath.item]
-        showAlertMessage(title: "이 사진을 선택하시겠습니까?", button: "웅!!")
+        selectAlertMessage(title: "이 사진을 선택하시겠습니까?", button: "웅!!")
     }
     
     
@@ -133,7 +133,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController {
     
-    func showAlertMessage(title: String, button: String) {
+    func selectAlertMessage(title: String, button: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: button, style: .default)
         let cancel = UIAlertAction(title: "아니!", style: .cancel)

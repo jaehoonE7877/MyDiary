@@ -20,8 +20,7 @@ class UserDiary: Object {
     @Persisted var imageURL: String?
     
     //PK(중복이 안되는 필수 값 -> 일기 마다 고유한 번호를 부여하기 위해서): Int, UUID, ObjectID
-    @Persisted(primaryKey: true) var objectId: ObjectId
-    
+
     convenience init(diaryTitle: String, diaryContent: String?, diaryDate: Date, updatedDate: Date, imageURL: String?) {
         self.init()
         self.diaryTitle = diaryTitle

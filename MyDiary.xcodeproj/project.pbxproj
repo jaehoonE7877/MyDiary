@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2515809928B3883000BADFEB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515809828B3883000BADFEB /* Constants.swift */; };
+		2515809B28B388AC00BADFEB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515809A28B388AC00BADFEB /* Color.swift */; };
 		2566F02928B3163C0025EF44 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02828B3163C0025EF44 /* Realm */; };
 		2566F02B28B3163C0025EF44 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02A28B3163C0025EF44 /* RealmSwift */; };
 		2566F02E28B319E70025EF44 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2566F02D28B319E70025EF44 /* RealmModel.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2515809828B3883000BADFEB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2515809A28B388AC00BADFEB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2566F02D28B319E70025EF44 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		2566F03028B32AA90025EF44 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		257861AB28B236A100261F69 /* MyDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2515809728B3881100BADFEB /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2515809828B3883000BADFEB /* Constants.swift */,
+				2515809A28B388AC00BADFEB /* Color.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2566F02628B307C20025EF44 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +180,7 @@
 		257861C728B2370300261F69 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				2515809728B3881100BADFEB /* Constants */,
 				257861E628B23C5000261F69 /* CustomView */,
 				257861C828B2372F00261F69 /* BaseViewController.swift */,
 				257861CA28B2373900261F69 /* BaseView.swift */,
@@ -331,7 +345,9 @@
 				257861EF28B245E300261F69 /* SearchView.swift in Sources */,
 				257861AF28B236A100261F69 /* AppDelegate.swift in Sources */,
 				257861D728B2394B00261F69 /* APIKey.swift in Sources */,
+				2515809928B3883000BADFEB /* Constants.swift in Sources */,
 				257861C428B236C900261F69 /* WriteViewController.swift in Sources */,
+				2515809B28B388AC00BADFEB /* Color.swift in Sources */,
 				257861C628B236F500261F69 /* WirteView.swift in Sources */,
 				257861F128B246A500261F69 /* SearchCollectionViewCell.swift in Sources */,
 				257861FB28B257A200261F69 /* APIManager.swift in Sources */,

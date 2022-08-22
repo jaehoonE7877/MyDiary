@@ -36,7 +36,6 @@ class WriteView: BaseView {
     let dateTextField = BlackRadiusTextField().then {
         $0.placeholder = "날짜를 입력해주세요"
         $0.backgroundColor = .lightGray
-        $0.keyboardType = .numbersAndPunctuation
     }
     
     let contentTextView = UITextView().then {
@@ -45,10 +44,6 @@ class WriteView: BaseView {
         $0.layer.cornerRadius = 8
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.black.cgColor
-    }
-    
-    let sampleButton = UIButton().then {
-        $0.backgroundColor = .green
     }
     
     override init(frame: CGRect) {
@@ -61,15 +56,10 @@ class WriteView: BaseView {
     }
     
     override func configureUI() {
-        [mainImageView, titleTextField, dateTextField, contentTextView, searchImageButton, sampleButton].forEach { self.addSubview($0) }
+        [mainImageView, titleTextField, dateTextField, contentTextView, searchImageButton].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
-        
-        sampleButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
-            make.trailing.top.equalTo(self.safeAreaLayoutGuide)
-        }
         
         mainImageView.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(20)

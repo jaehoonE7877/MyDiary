@@ -19,12 +19,12 @@ class BlackRadiusTextField: UITextField {
     }
     
     func setupView() {
-        backgroundColor = .clear
+        backgroundColor = Constants.BaseColor.background
         textAlignment = .center
         borderStyle = .none
-        layer.cornerRadius = 8
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = Constants.Design.cornerRadius
+        layer.borderWidth = Constants.Design.borderWidth
+        layer.borderColor = Constants.BaseColor.border
         font = .boldSystemFont(ofSize: 15)
     }
     

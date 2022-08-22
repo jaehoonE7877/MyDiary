@@ -29,6 +29,7 @@ class HomeViewController: BaseViewController {
         view.backgroundColor = .black
         // Realm 3. Realm 데이터를 정렬해 tasks에 담기
         tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+
         
         tableView.delegate = self
         tableView.dataSource = self
