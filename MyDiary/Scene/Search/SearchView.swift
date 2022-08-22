@@ -18,7 +18,7 @@ class SearchView: BaseView {
     
     let searchCollctionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 8
+        let spacing: CGFloat = 0
         let width = (UIScreen.main.bounds.width - (spacing * 4)) / 3
         
         layout.scrollDirection = .vertical

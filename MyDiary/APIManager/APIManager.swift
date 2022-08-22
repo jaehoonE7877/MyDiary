@@ -28,7 +28,7 @@ class UnsplashAPIManager {
                 
                 let imageList = json["results"].arrayValue.map { $0["urls"]["regular"].stringValue }
                 let pageNum = json["total_pages"].intValue
-                dump(pageNum)
+                //dump(pageNum)
                 completionHandler(imageList, pageNum)
                 
             case .failure(let error):

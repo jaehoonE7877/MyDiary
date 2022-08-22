@@ -27,7 +27,7 @@ class SearchCollectioinViewCell: BaseCollectionViewCell {
     
     override func setCellConstraints() {
         searchImageView.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalTo(self)
+            make.edges.equalTo(self)
         }
     }
     
