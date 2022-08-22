@@ -42,6 +42,9 @@
 		257861FE28B2755B00261F69 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861FD28B2755B00261F69 /* Notification.Name+Extension.swift */; };
 		2578620128B27A1200261F69 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 2578620028B27A1200261F69 /* JGProgressHUD */; };
 		2578620428B27BBF00261F69 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2578620328B27BBF00261F69 /* IQKeyboardManagerSwift */; };
+		258AEDD228B3C0D300CD6A14 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258AEDD128B3C0D300CD6A14 /* HomeView.swift */; };
+		258AEDD428B3C0DF00CD6A14 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258AEDD328B3C0DF00CD6A14 /* HomeTableViewCell.swift */; };
+		258AEDD628B3C0F800CD6A14 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258AEDD528B3C0F800CD6A14 /* BaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,9 @@
 		257861F728B255C400261F69 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		257861FA28B257A200261F69 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		257861FD28B2755B00261F69 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
+		258AEDD128B3C0D300CD6A14 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		258AEDD328B3C0DF00CD6A14 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		258AEDD528B3C0F800CD6A14 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				2566F03028B32AA90025EF44 /* HomeViewController.swift */,
+				258AEDD128B3C0D300CD6A14 /* HomeView.swift */,
+				258AEDD328B3C0DF00CD6A14 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 				257861C828B2372F00261F69 /* BaseViewController.swift */,
 				257861CA28B2373900261F69 /* BaseView.swift */,
 				257861F228B2520500261F69 /* BaseCollectionViewCell.swift */,
+				258AEDD528B3C0F800CD6A14 /* BaseTableViewCell.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -337,9 +346,11 @@
 				257861E828B23C8E00261F69 /* BlackRadiusTextField.swift in Sources */,
 				257861F328B2520500261F69 /* BaseCollectionViewCell.swift in Sources */,
 				2566F02E28B319E70025EF44 /* RealmModel.swift in Sources */,
+				258AEDD628B3C0F800CD6A14 /* BaseTableViewCell.swift in Sources */,
 				257861ED28B245C700261F69 /* SearchViewController.swift in Sources */,
 				257861F528B253DE00261F69 /* UIViewController+Extension.swift in Sources */,
 				257861EA28B244B400261F69 /* ReusableViewProtocol.swift in Sources */,
+				258AEDD428B3C0DF00CD6A14 /* HomeTableViewCell.swift in Sources */,
 				257861B328B236A100261F69 /* ViewController.swift in Sources */,
 				257861FE28B2755B00261F69 /* Notification.Name+Extension.swift in Sources */,
 				257861EF28B245E300261F69 /* SearchView.swift in Sources */,
@@ -355,6 +366,7 @@
 				257861CB28B2373900261F69 /* BaseView.swift in Sources */,
 				257861B128B236A100261F69 /* SceneDelegate.swift in Sources */,
 				257861C928B2372F00261F69 /* BaseViewController.swift in Sources */,
+				258AEDD228B3C0D300CD6A14 /* HomeView.swift in Sources */,
 				257861F828B255C400261F69 /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,7 +32,7 @@ class WriteViewController: BaseViewController {
         
         view.backgroundColor = .black
         
-        //print("Realm is located at:", localRealm.configuration.fileURL!)
+        print("Realm is located at:", localRealm.configuration.fileURL!)
         NotificationCenter.default.addObserver(self, selector: #selector(saveImageNotificationObserver(notification:)), name: .selectedImage, object: nil)
     }
     
