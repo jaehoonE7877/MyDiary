@@ -34,10 +34,11 @@ class WriteViewController: BaseViewController {
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
         NotificationCenter.default.addObserver(self, selector: #selector(saveImageNotificationObserver(notification:)), name: .selectedImage, object: nil)
+        
     }
     
     override func configure() {
-        self.navigationItem.title = "My Diary"
+        self.navigationItem.title = "Diary 작성하기"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
         mainView.searchImageButton.addTarget(self, action: #selector(searchImageButtonTapped), for: .touchUpInside)
         
@@ -56,8 +57,7 @@ class WriteViewController: BaseViewController {
             localRealm.add(task)    // Create(실제로 추가되는 것)
             print("Realm Succeed")
             
-            let vc = HomeViewController()
-            self.navigationController?.pushViewController(vc, animated: true)// dismiss 위치 => 조건에 따라서 성공시에만 dismiss되도록
+            dismiss(animated: true)// dismiss 위치 => 조건에 따라서 성공시에만 dismiss되도록
         }
     }
     
