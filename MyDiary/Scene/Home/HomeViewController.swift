@@ -63,7 +63,7 @@ class HomeViewController: BaseViewController {
     }
     
     func fetchRealm(){
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "updatedDate", ascending: true)
     }
     
     //actionSheet으로 정렬 -> completionhandler
@@ -119,6 +119,23 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+            try! localRealm.write{
+                localRealm.delete(tasks[indexPath.row])
+                DispatchQueue.main.async{
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     //참고. TableView Editing Mode
     
     //테이블 뷰 셀 높이가 작을 경우, 이미지가 없을 때, 시스템 이미지가 아닌 경우
@@ -148,7 +165,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let image = tasks[indexPath.row].favorite ? "star.fill" : "star"
         favorite.image = UIImage(systemName: image)
         favorite.backgroundColor = .systemPink
-        
         
         return UISwipeActionsConfiguration(actions: [favorite])
     }

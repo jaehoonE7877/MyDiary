@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2515809928B3883000BADFEB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515809828B3883000BADFEB /* Constants.swift */; };
 		2515809B28B388AC00BADFEB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515809A28B388AC00BADFEB /* Color.swift */; };
+		253946B128B49FF3004CC1BF /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253946B028B49FF3004CC1BF /* CustomMenu.swift */; };
 		2566F02928B3163C0025EF44 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02828B3163C0025EF44 /* Realm */; };
 		2566F02B28B3163C0025EF44 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02A28B3163C0025EF44 /* RealmSwift */; };
 		2566F02E28B319E70025EF44 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2566F02D28B319E70025EF44 /* RealmModel.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		2515809828B3883000BADFEB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2515809A28B388AC00BADFEB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		253946B028B49FF3004CC1BF /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		2566F02D28B319E70025EF44 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		2566F03028B32AA90025EF44 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		257861AB28B236A100261F69 /* MyDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				257861E728B23C8E00261F69 /* BlackRadiusTextField.swift */,
+				253946B028B49FF3004CC1BF /* CustomMenu.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				257861CB28B2373900261F69 /* BaseView.swift in Sources */,
 				257861B128B236A100261F69 /* SceneDelegate.swift in Sources */,
 				257861C928B2372F00261F69 /* BaseViewController.swift in Sources */,
+				253946B128B49FF3004CC1BF /* CustomMenu.swift in Sources */,
 				257861F828B255C400261F69 /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
