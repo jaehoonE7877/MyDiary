@@ -161,16 +161,3 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
 }
-
-extension SearchViewController {
-    
-    func selectAlertMessage(title: String, button: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction(title: button, style: .default)
-        let cancel = UIAlertAction(title: "아니!", style: .cancel)
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        present(alert, animated: true)
-    }
-}

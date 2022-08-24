@@ -55,19 +55,19 @@ class WriteViewController: BaseViewController {
         self.dismiss(animated: true)
     }
     
-    func saveImageToDocument(fileName: String, image: UIImage) {
-        //Document 경로를 알려줌
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        //Document 이후 세부 경로(이미지를 저장할 위치)
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
-        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
-        
-        do {
-            try data.write(to: fileURL)
-        } catch {
-            print("file save error", error)
-        }
-    }
+//    func saveImageToDocument(fileName: String, image: UIImage) {
+//        //Document 경로를 알려줌
+//        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+//        //Document 이후 세부 경로(이미지를 저장할 위치)
+//        let fileURL = documentDirectory.appendingPathComponent(fileName)
+//        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+//
+//        do {
+//            try data.write(to: fileURL)
+//        } catch {
+//            print("file save error", error)
+//        }
+//    }
     
     // Realm + 이미지 도큐먼트 저장
     @objc
@@ -101,13 +101,10 @@ class WriteViewController: BaseViewController {
         
         //UImenu, UIAlert
         
-        
-        
-        
-        
+
         let vc = SearchViewController()
         vc.delegate = self
-        transitionViewController(viewController: vc, transitionStyle: .presentNavigation) { _ in }
+        transitionViewController(viewController: vc, transitionStyle: .presentNavigation)
     }
     
     @objc

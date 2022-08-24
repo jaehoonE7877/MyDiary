@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2515809928B3883000BADFEB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515809828B3883000BADFEB /* Constants.swift */; };
 		2515809B28B388AC00BADFEB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515809A28B388AC00BADFEB /* Color.swift */; };
+		251814A028B691C500E43DBD /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2518149F28B691C500E43DBD /* BackupViewController.swift */; };
+		251814A228B6944C00E43DBD /* BackupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251814A128B6944C00E43DBD /* BackupTableViewCell.swift */; };
 		253946B128B49FF3004CC1BF /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253946B028B49FF3004CC1BF /* CustomMenu.swift */; };
 		2566F02928B3163C0025EF44 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02828B3163C0025EF44 /* Realm */; };
 		2566F02B28B3163C0025EF44 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02A28B3163C0025EF44 /* RealmSwift */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		2515809828B3883000BADFEB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2515809A28B388AC00BADFEB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		2518149F28B691C500E43DBD /* BackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
+		251814A128B6944C00E43DBD /* BackupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTableViewCell.swift; sourceTree = "<group>"; };
 		253946B028B49FF3004CC1BF /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		2566F02D28B319E70025EF44 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		2566F03028B32AA90025EF44 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -112,9 +116,19 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		2518149E28B6919600E43DBD /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				2518149F28B691C500E43DBD /* BackupViewController.swift */,
+				251814A128B6944C00E43DBD /* BackupTableViewCell.swift */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
 		2566F02628B307C20025EF44 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				2518149E28B6919600E43DBD /* Backup */,
 				2566F02F28B32A950025EF44 /* Home */,
 				257861C228B236A900261F69 /* Write */,
 				257861EB28B245A900261F69 /* Search */,
@@ -347,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				257861E828B23C8E00261F69 /* BlackRadiusTextField.swift in Sources */,
+				251814A228B6944C00E43DBD /* BackupTableViewCell.swift in Sources */,
 				257861F328B2520500261F69 /* BaseCollectionViewCell.swift in Sources */,
 				2566F02E28B319E70025EF44 /* RealmModel.swift in Sources */,
 				258AEDD628B3C0F800CD6A14 /* BaseTableViewCell.swift in Sources */,
@@ -363,6 +378,7 @@
 				257861C428B236C900261F69 /* WriteViewController.swift in Sources */,
 				2515809B28B388AC00BADFEB /* Color.swift in Sources */,
 				257861C628B236F500261F69 /* WirteView.swift in Sources */,
+				251814A028B691C500E43DBD /* BackupViewController.swift in Sources */,
 				257861F128B246A500261F69 /* SearchCollectionViewCell.swift in Sources */,
 				257861FB28B257A200261F69 /* APIManager.swift in Sources */,
 				2566F03128B32AA90025EF44 /* HomeViewController.swift in Sources */,

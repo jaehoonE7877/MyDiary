@@ -16,7 +16,7 @@ enum TransitionStyle {
 
 extension UIViewController {
     
-    func transitionViewController<T: UIViewController>(viewController vc: T, transitionStyle: TransitionStyle, completionHandler: (T) -> () ) {
+    func transitionViewController<T: UIViewController>(viewController vc: T, transitionStyle: TransitionStyle) {
         
         let nav = UINavigationController(rootViewController: vc)
         
@@ -29,7 +29,6 @@ extension UIViewController {
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         case .push:
-            completionHandler(vc)
             self.navigationController?.pushViewController(vc, animated: true)
         
         }

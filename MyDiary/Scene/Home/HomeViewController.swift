@@ -51,9 +51,10 @@ class HomeViewController: BaseViewController {
         view.addSubview(tableView)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
+        let settingButton = UIBarButtonItem(title: "설정", style: .plain, target: self , action: #selector(settingButtonTapped))
         let sortButton = UIBarButtonItem(title: "정렬", style: .plain, target: self, action: #selector(sortButtonTapped))
-        let filterButton = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterButtonTapped))
-        navigationItem.leftBarButtonItems = [sortButton, filterButton]
+        //let filterButton = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterButtonTapped))
+        navigationItem.leftBarButtonItems = [settingButton, sortButton]
     }
     
     override func setConstraints() {
@@ -73,41 +74,22 @@ class HomeViewController: BaseViewController {
     }
     
     //realm에서 필터를 할 수 있는 query, NSPredicate(apple이 가지고있는 필터기능)
-    @objc
-    func filterButtonTapped() {
-        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS[c] '6'")
-            //.filter("diaryTitle = '가오늘의 일기316'")
-    }
+//    @objc
+//    func filterButtonTapped() {
+//        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS[c] '6'")
+//            //.filter("diaryTitle = '가오늘의 일기316'")
+//    }
     
     @objc
     func plusButtonTapped() {
         let vc = WriteViewController()
-        transitionViewController(viewController: vc, transitionStyle: .presentFullNavigation) { _ in }
+        transitionViewController(viewController: vc, transitionStyle: .presentFullNavigation)
     }
-    
-    func loadImageFromDocument(fileName: String) -> UIImage? {
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
-        //Document 이후 세부 경로(이미지를 저장할 위치)
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
-        
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-            return UIImage(contentsOfFile: fileURL.path)
-        } else {
-            return UIImage(systemName: "star.fill")     // 준비중 이미지 띄우기
-        }
-        
-    }
-    
-    func removeImageForDocument(fileName: String) {
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
-        
-        do {
-            try FileManager.default.removeItem(at: fileURL)
-        } catch let error {
-            print(error)
-        }
-        
+    // tabBar로 넘길 수 있게 만들어보기
+    @objc
+    func settingButtonTapped(){
+        let vc = BackupViewController()
+        transitionViewController(viewController: vc, transitionStyle: .push)
     }
     
 }
