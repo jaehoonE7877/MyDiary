@@ -14,6 +14,7 @@
 		2566F02B28B3163C0025EF44 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2566F02A28B3163C0025EF44 /* RealmSwift */; };
 		2566F02E28B319E70025EF44 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2566F02D28B319E70025EF44 /* RealmModel.swift */; };
 		2566F03128B32AA90025EF44 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2566F03028B32AA90025EF44 /* HomeViewController.swift */; };
+		2568E3AB28B5D28A000F872A /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2568E3AA28B5D28A000F872A /* FileManager+Extension.swift */; };
 		257861AF28B236A100261F69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861AE28B236A100261F69 /* AppDelegate.swift */; };
 		257861B128B236A100261F69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861B028B236A100261F69 /* SceneDelegate.swift */; };
 		257861B328B236A100261F69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257861B228B236A100261F69 /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 		253946B028B49FF3004CC1BF /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		2566F02D28B319E70025EF44 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		2566F03028B32AA90025EF44 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2568E3AA28B5D28A000F872A /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		257861AB28B236A100261F69 /* MyDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		257861AE28B236A100261F69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		257861B028B236A100261F69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				257861F428B253DE00261F69 /* UIViewController+Extension.swift */,
 				257861FD28B2755B00261F69 /* Notification.Name+Extension.swift */,
+				2568E3AA28B5D28A000F872A /* FileManager+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				257861CB28B2373900261F69 /* BaseView.swift in Sources */,
 				257861B128B236A100261F69 /* SceneDelegate.swift in Sources */,
 				257861C928B2372F00261F69 /* BaseViewController.swift in Sources */,
+				2568E3AB28B5D28A000F872A /* FileManager+Extension.swift in Sources */,
 				253946B128B49FF3004CC1BF /* CustomMenu.swift in Sources */,
 				257861F828B255C400261F69 /* ImageModel.swift in Sources */,
 			);

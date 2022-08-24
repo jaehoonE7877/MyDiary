@@ -10,8 +10,12 @@ import UIKit
 import RealmSwift
 import Kingfisher
 
-class WriteViewController: BaseViewController {
+protocol SelectImageDelegate {
+    func sendImageData(image: UIImage)
+}
 
+class WriteViewController: BaseViewController {
+    
     private let datePicker = UIDatePicker()
     
     var selectedDate: Date?
@@ -34,38 +38,76 @@ class WriteViewController: BaseViewController {
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
         NotificationCenter.default.addObserver(self, selector: #selector(saveImageNotificationObserver(notification:)), name: .selectedImage, object: nil)
-        
     }
     
     override func configure() {
         self.navigationItem.title = "Diary 작성하기"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cancelButtonTapped))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
+        
         mainView.searchImageButton.addTarget(self, action: #selector(searchImageButtonTapped), for: .touchUpInside)
         
         configureDatePicker()
     }
-   
+    
+    @objc
+    func cancelButtonTapped(){
+        self.dismiss(animated: true)
+    }
+    
+    func saveImageToDocument(fileName: String, image: UIImage) {
+        //Document 경로를 알려줌
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        //Document 이후 세부 경로(이미지를 저장할 위치)
+        let fileURL = documentDirectory.appendingPathComponent(fileName)
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        do {
+            try data.write(to: fileURL)
+        } catch {
+            print("file save error", error)
+        }
+    }
+    
+    // Realm + 이미지 도큐먼트 저장
     @objc
     func saveButtonTapped(){
         
-        guard let diaryTitle = mainView.titleTextField.text, diaryTitle.count > 0 else { return showAlertMessage(title: "일기 제목을 입력해주세요", button: "확인") }
-        guard let selectedDate = selectedDate else { return showAlertMessage(title: "날짜를 입력해주세요", button: "확인") }
+        guard let diaryTitle = mainView.titleTextField.text, diaryTitle.count > 0 else { showAlertMessage(title: "일기 제목을 입력해주세요", button: "확인"); return  }
+        guard let selectedDate = selectedDate else { showAlertMessage(title: "날짜를 입력해주세요", button: "확인"); return  }
         
         let task = UserDiary(diaryTitle: diaryTitle, diaryContent: mainView.contentTextView.text, diaryDate: selectedDate, updatedDate: Date(), imageURL: selectedImageURL) // => Record 한 줄 생성
         
-        try! localRealm.write {
-            localRealm.add(task)    // Create(실제로 추가되는 것)
-            print("Realm Succeed")
-            
-            dismiss(animated: true)// dismiss 위치 => 조건에 따라서 성공시에만 dismiss되도록
+        do{
+            try localRealm.write{
+                localRealm.add(task) // Create(실제로 추가되는 것)
+            }
+        } catch let error {
+            print(error)
         }
+        
+        // Realm 저장 이후에 document 저장 => PK가 있어야 되기 때문에
+        
+        if let image = mainView.mainImageView.image {
+            saveImageToDocument(fileName: "\(task.objectId)", image: image)
+        }
+        
+        dismiss(animated: true)// dismiss 위치 => 조건에 따라서 성공시에만 dismiss되도록
     }
+    
     
     @objc
     func searchImageButtonTapped(){
         
+        //UImenu, UIAlert
+        
+        
+        
+        
+        
         let vc = SearchViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.delegate = self
+        transitionViewController(viewController: vc, transitionStyle: .presentNavigation) { _ in }
     }
     
     @objc
@@ -75,14 +117,14 @@ class WriteViewController: BaseViewController {
             self.selectedImageURL = image
             let url = URL(string: image)
             DispatchQueue.main.async {
-                self.mainView.mainImageView.kf.setImage(with: url)
+                //self.mainView.mainImageView.kf.setImage(with: url)
             }
         }
     }
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("image"), object: nil)
     }
-
+    
 }
 
 extension WriteViewController {
@@ -108,5 +150,16 @@ extension WriteViewController {
         
     }
     
+}
+
+extension WriteViewController: SelectImageDelegate {
+    
+    //
+    func sendImageData(image: UIImage) {
+        mainView.mainImageView.image = image
+        print(#function)
+    }
     
 }
+
+

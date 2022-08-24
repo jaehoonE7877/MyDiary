@@ -82,11 +82,33 @@ class HomeViewController: BaseViewController {
     @objc
     func plusButtonTapped() {
         let vc = WriteViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true)
+        transitionViewController(viewController: vc, transitionStyle: .presentFullNavigation) { _ in }
     }
     
+    func loadImageFromDocument(fileName: String) -> UIImage? {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
+        //Document 이후 세부 경로(이미지를 저장할 위치)
+        let fileURL = documentDirectory.appendingPathComponent(fileName)
+        
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            return UIImage(contentsOfFile: fileURL.path)
+        } else {
+            return UIImage(systemName: "star.fill")     // 준비중 이미지 띄우기
+        }
+        
+    }
+    
+    func removeImageForDocument(fileName: String) {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileURL = documentDirectory.appendingPathComponent(fileName)
+        
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+        } catch let error {
+            print(error)
+        }
+        
+    }
     
 }
 
@@ -110,11 +132,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = formatter.string(from: tasks[indexPath.row].diaryDate)
         cell.contentLabel.text = tasks[indexPath.row].diaryContent
         
-        if let imageUrl = tasks[indexPath.row].imageURL {
-            cell.diaryImageView.kf.setImage(with: URL(string: imageUrl))
-        } else {
-            cell.diaryImageView.image = UIImage(systemName: "xmark")
-        }
+//        if let imageUrl = tasks[indexPath.row].imageURL {
+//            cell.diaryImageView.kf.setImage(with: URL(string: imageUrl))
+//        } else {
+//            cell.diaryImageView.image = UIImage(systemName: "xmark")
+//        }
+        
+        cell.diaryImageView.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectId)")
         
         return cell
     }
@@ -127,12 +151,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if editingStyle == .delete{
             
-            try! localRealm.write{
-                localRealm.delete(tasks[indexPath.row])
-                DispatchQueue.main.async{
-                    tableView.reloadData()
+            do {
+                try localRealm.write{
+                    localRealm.delete(tasks[indexPath.row])
+                    removeImageForDocument(fileName: "\(tasks[indexPath.row].objectId)")
+                    DispatchQueue.main.async{
+                        tableView.reloadData()
+                    }
                 }
+            } catch let error {
+                print(error)
             }
+            
+           
         }
     }
     

@@ -28,3 +28,4 @@ extension UICollectionViewCell: ReusableViewProtocol {
         return String(describing: self)
     }
 }
+

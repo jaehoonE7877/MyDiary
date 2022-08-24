@@ -10,9 +10,14 @@ import UIKit
 import JGProgressHUD
 import Kingfisher
 
-
-
 class SearchViewController: BaseViewController {
+    
+    var delegate: SelectImageDelegate?
+    var selectImage: UIImage?
+    var selectIndexPath: IndexPath?
+    
+    
+    var selectedImageURL: String?
     
     let hud = JGProgressHUD()
     
@@ -22,21 +27,20 @@ class SearchViewController: BaseViewController {
     var totalPage = 0
     var startPage = 1
     
-    var selectedImageURL: String?
-    
     override func loadView() {
         self.view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = Constants.BaseColor.background
     }
     
     override func configure() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(selectButtonTapped))
-        
+        let select = navigationItem.rightBarButtonItem = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(selectButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cancelButtonTapped))
+
         mainView.searchCollctionView.delegate = self
         mainView.searchCollctionView.dataSource = self
         mainView.searchCollctionView.register(SearchCollectioinViewCell.self, forCellWithReuseIdentifier: SearchCollectioinViewCell.reuseIdentifier)
@@ -46,12 +50,22 @@ class SearchViewController: BaseViewController {
     }
     
     @objc
+    func cancelButtonTapped(){
+        self.dismiss(animated: true)
+    }
+    
+    @objc
     func selectButtonTapped(){
-        guard let selectedImageURL = selectedImageURL else { return }
-
-        NotificationCenter.default.post(name: .selectedImage, object: nil, userInfo: ["image": selectedImageURL])
         
-        navigationController?.popViewController(animated: true)
+//        guard let selectedImageURL = selectedImageURL else { return }
+//
+//        NotificationCenter.default.post(name: .selectedImage, object: nil, userInfo: ["image": selectedImageURL])
+        //alert 대신 toast, 버튼을 .disable 한 상태로 만들기
+        guard let selectImage = selectImage else { showAlertMessage(title: "사진을 선택해주세요", button: "확인"); return }
+
+        
+        delegate?.sendImageData(image: selectImage )
+        dismiss(animated: true)
     }
     
     
@@ -71,6 +85,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectioinViewCell.reuseIdentifier, for: indexPath) as? SearchCollectioinViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .lightGray
+        
+        cell.layer.borderWidth = selectIndexPath == indexPath ? 4 : 0
+        cell.layer.borderColor = selectIndexPath == indexPath ? UIColor.tintColor.cgColor : nil
+        
         let url = URL(string: imageList[indexPath.item])
         cell.searchImageView.kf.setImage(with: url)
         
@@ -78,9 +96,22 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // didselect 하면 데이터 notification
+    // userinterectionEnabled && progress loading
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedImageURL = imageList[indexPath.item]
-        selectAlertMessage(title: "이 사진을 선택하시겠습니까?", button: "웅!!")
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SearchCollectioinViewCell else { return }
+        
+        selectImage = cell.searchImageView.image
+        //selectedImageURL = imageList[indexPath.item]
+        selectIndexPath = indexPath
+        collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print(#function)
+        selectIndexPath = nil
+        selectImage = nil
+        collectionView.reloadData()
     }
     
     

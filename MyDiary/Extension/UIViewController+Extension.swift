@@ -9,21 +9,25 @@ import UIKit
 
 enum TransitionStyle {
     case present
-    case fullScreenPresent
+    case presentNavigation
+    case presentFullNavigation
     case push
 }
 
 extension UIViewController {
     
-    func transitionViewController<T: UIViewController>(storyboard: String, viewController vc: T, transitionStyle: TransitionStyle, completionHandler: (T) -> ()) {
+    func transitionViewController<T: UIViewController>(viewController vc: T, transitionStyle: TransitionStyle, completionHandler: (T) -> () ) {
         
+        let nav = UINavigationController(rootViewController: vc)
         
         switch transitionStyle {
         case .present:
             self.present(vc, animated: true)
-        case .fullScreenPresent:
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true)
+        case .presentNavigation:
+            self.present(nav, animated: true)
+        case .presentFullNavigation:
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
         case .push:
             completionHandler(vc)
             self.navigationController?.pushViewController(vc, animated: true)
