@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WriteView: BaseView {
+final class WriteView: BaseView {
     
     let mainImageView = UIImageView().then {
         $0.backgroundColor = .lightGray

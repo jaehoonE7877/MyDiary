@@ -14,18 +14,16 @@ protocol SelectImageDelegate {
     func sendImageData(image: UIImage)
 }
 
-class WriteViewController: BaseViewController {
+final class WriteViewController: BaseViewController {
     
     private let datePicker = UIDatePicker()
+    
+    let repository = UserDiaryRepository()
     
     var selectedDate: Date?
     var selectedImageURL: String?
     
     var mainView = WriteView()
-    
-    // 2.realm table에 내용을 CRUD할 때, Realm 테이블 경로에 접근
-    let localRealm = try! Realm()
-    
     
     override func loadView() {
         self.view = mainView
@@ -36,7 +34,7 @@ class WriteViewController: BaseViewController {
         
         view.backgroundColor = .black
         
-        print("Realm is located at:", localRealm.configuration.fileURL!)
+        print("Realm is located at:", repository.localRealm.configuration.fileURL!)
         NotificationCenter.default.addObserver(self, selector: #selector(saveImageNotificationObserver(notification:)), name: .selectedImage, object: nil)
     }
     
@@ -78,13 +76,7 @@ class WriteViewController: BaseViewController {
         
         let task = UserDiary(diaryTitle: diaryTitle, diaryContent: mainView.contentTextView.text, diaryDate: selectedDate, updatedDate: Date(), imageURL: selectedImageURL) // => Record 한 줄 생성
         
-        do{
-            try localRealm.write{
-                localRealm.add(task) // Create(실제로 추가되는 것)
-            }
-        } catch let error {
-            print(error)
-        }
+        repository.addItem(item: task)
         
         // Realm 저장 이후에 document 저장 => PK가 있어야 되기 때문에
         
@@ -106,10 +98,10 @@ class WriteViewController: BaseViewController {
         vc.delegate = self
         transitionViewController(viewController: vc, transitionStyle: .presentNavigation)
     }
-    
+    //노티피케이션으로 데이터 전달
     @objc
     func saveImageNotificationObserver(notification: NSNotification) {
-        
+
         if let image = notification.userInfo?["image"] as? String {
             self.selectedImageURL = image
             let url = URL(string: image)
