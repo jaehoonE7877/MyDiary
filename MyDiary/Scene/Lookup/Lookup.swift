@@ -13,8 +13,6 @@ import RealmSwift
 
 final class LookupViewController: BaseViewController {
     
-    let searchController = UISearchController(searchResultsController: nil)
-    
     lazy var tableView = UITableView().then {
         $0.rowHeight = 100
         $0.backgroundColor = Constants.BaseColor.background
@@ -23,20 +21,22 @@ final class LookupViewController: BaseViewController {
         $0.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.reuseIdentifier)
     }
     
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        return formatter
+    }()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+
     let repository = UserDiaryRepository()
     var diaryTitleList: [String]?
     var filteredList: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         //레포지토리에서 데이터 가져오기
         diaryTitleList = repository.fetch().map({ $0.diaryTitle })
-        
     }
     
     override func configure() {
@@ -46,17 +46,17 @@ final class LookupViewController: BaseViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         
         searchController.searchResultsUpdater = self
-        self.navigationItem.searchController = searchController
-        self.navigationItem.title = "Diary"
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.searchController = searchController
+        navigationItem.title = "Diary"
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         searchController.view.addSubview(tableView)
     }
     
     override func setConstraints() {
         tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.edges.equalTo(searchController.view.safeAreaLayoutGuide)
         }
     }
     
@@ -65,7 +65,7 @@ final class LookupViewController: BaseViewController {
 extension LookupViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diaryTitleList?.count ?? 5
+        return filteredList?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +73,13 @@ extension LookupViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.reuseIdentifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
         
         cell.titleLabel.text = filteredList?[indexPath.row]
-        
+        repository.fetch().forEach {
+            if $0.diaryTitle == filteredList?[indexPath.row]{
+                cell.dateLabel.text = formatter.string(from: $0.diaryDate)
+                cell.contentLabel.text = $0.diaryContent
+                cell.diaryImageView.image = loadImageFromDocument(fileName: "\($0.objectId)")
+            }
+        }
         
         return cell
     }

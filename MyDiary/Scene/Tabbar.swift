@@ -48,7 +48,6 @@ final class TabbarController: UITabBarController, UITabBarControllerDelegate {
         //탭바의 배경색을 투명하게해서
         //appearance.configureWithOpaqueBackground()
         tabBar.tintColor = Constants.BaseColor.tabbar
-        appearence.selectionIndicatorTintColor = .systemPink
         tabBar.backgroundColor = Constants.BaseColor.background
         tabBar.standardAppearance = appearence
         tabBar.scrollEdgeAppearance = appearence
@@ -57,7 +56,6 @@ final class TabbarController: UITabBarController, UITabBarControllerDelegate {
     private func setupTabAppearence(){
         tabBar.backgroundColor = Constants.BaseColor.background
         tabBar.tintColor = Constants.BaseColor.tabbar
-        tabBar.selectedItem?.badgeColor = .systemPink
     }
 }
 

@@ -158,7 +158,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             //⭐️ 확인해보기
             //tableView.beginUpdates()
             //tableView.endUpdates()
-           
+            self.fetchRealm()
         }
     }
     
